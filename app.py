@@ -22,7 +22,7 @@ warnings.filterwarnings("ignore")
 # ── Page config ───────────────────────────────────────────────
 st.set_page_config(
     page_title="Regresi Berganda — Prediksi Gol",
-    page_icon="⚽",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -176,11 +176,11 @@ with st.sidebar:
     st.markdown("Masukkan statistik tim untuk memprediksi jumlah gol.")
     st.divider()
 
-    inp_possession      = st.slider("🔵 Ball Possession (%)",      10, 80, 55)
-    inp_shots           = st.slider("🎯 Total Shots",               1, 90, 35)
-    inp_shots_on_target = st.slider("✅ Shots on Target",           0, int(inp_shots), min(12, inp_shots))
-    inp_assists         = st.slider("🤝 Assists",                   0, 15,  3)
-    inp_fouls           = st.slider("🟨 Fouls Committed",           5, 70, 30)
+    inp_possession      = st.slider(" Ball Possession (%)",      10, 80, 55)
+    inp_shots           = st.slider(" Total Shots",               1, 90, 35)
+    inp_shots_on_target = st.slider(" Shots on Target",           0, int(inp_shots), min(12, inp_shots))
+    inp_assists         = st.slider(" Assists",                   0, 15,  3)
+    inp_fouls           = st.slider(" Fouls Committed",           5, 70, 30)
 
     inp_array = np.array([[inp_possession, inp_shots,
                            inp_shots_on_target, inp_assists, inp_fouls]])
@@ -211,11 +211,11 @@ st.markdown(
 
 # ── Metrik utama ──────────────────────────────────────────────
 c1, c2, c3, c4, c5 = st.columns(5)
-c1.metric("📊 Total Data",   f"{len(df):,} records")
-c2.metric("🎯 Variabel X",   f"{len(features)} fitur")
-c3.metric("📈 R² Score",     f"{metrics['r2']:.4f}",   f"{metrics['r2']*100:.1f}% explained")
-c4.metric("📉 RMSE",         f"{metrics['rmse']:.4f}", "gol")
-c5.metric("📉 MAE",          f"{metrics['mae']:.4f}",  "gol")
+c1.metric(" Total Data",   f"{len(df):,} records")
+c2.metric(" Variabel X",   f"{len(features)} fitur")
+c3.metric(" R² Score",     f"{metrics['r2']:.4f}",   f"{metrics['r2']*100:.1f}% explained")
+c4.metric(" RMSE",         f"{metrics['rmse']:.4f}", "gol")
+c5.metric(" MAE",          f"{metrics['mae']:.4f}",  "gol")
 
 st.divider()
 
@@ -224,16 +224,16 @@ st.divider()
 #  TABS
 # ══════════════════════════════════════════════════════════════
 tab1, tab2, tab3, tab4 = st.tabs([
-    "📋 Dataset & Statistik",
-    "🔥 Heatmap Korelasi",
-    "📈 Scatter Plots",
-    "🧪 Evaluasi Model",
+    " Dataset & Statistik",
+    " Heatmap Korelasi",
+    " Scatter Plots",
+    " Evaluasi Model",
 ])
 
 
 # ── TAB 1: Dataset ────────────────────────────────────────────
 with tab1:
-    st.markdown("## 📋 Dataset")
+    st.markdown("##  Dataset")
 
     col_info, col_stat = st.columns([1, 2])
     with col_info:
@@ -280,7 +280,7 @@ with tab1:
 
 # ── TAB 2: Heatmap ────────────────────────────────────────────
 with tab2:
-    st.markdown("## 🔥 Heatmap Korelasi")
+    st.markdown("##  Heatmap Korelasi")
     st.markdown(
         "Heatmap menunjukkan seberapa kuat hubungan linear antara setiap pasang variabel. "
         "Nilai mendekati **+1** = korelasi positif kuat, **-1** = negatif kuat."
@@ -332,7 +332,7 @@ with tab2:
     plt.close(fig_heat)
 
     # Interpretasi otomatis
-    st.markdown("### 💡 Interpretasi")
+    st.markdown("###  Interpretasi")
     corr_target_sorted = corr[target].drop(target).abs().sort_values(ascending=False)
     top_feat = corr_target_sorted.index[0]
     top_val  = corr[target][top_feat]
@@ -345,7 +345,7 @@ with tab2:
 
 # ── TAB 3: Scatter Plots ──────────────────────────────────────
 with tab3:
-    st.markdown("## 📈 Scatter Plot: Setiap X terhadap Y")
+    st.markdown("##  Scatter Plot: Setiap X terhadap Y")
     st.markdown(
         "Setiap panel menampilkan hubungan satu fitur dengan `goals`, "
         "dilengkapi **garis regresi linear sederhana**."
@@ -402,7 +402,7 @@ with tab3:
 
 # ── TAB 4: Evaluasi ───────────────────────────────────────────
 with tab4:
-    st.markdown("## 🧪 Evaluasi Model")
+    st.markdown("##  Evaluasi Model")
 
     col_l, col_r = st.columns(2)
 
@@ -473,7 +473,7 @@ with tab4:
 
     # Kesimpulan
     st.divider()
-    st.markdown("### 📝 Kesimpulan")
+    st.markdown("###  Kesimpulan")
     top_coef = sorted(zip(features, model.coef_), key=lambda x: abs(x[1]), reverse=True)
     st.success(
         f"Model **Multiple Linear Regression** berhasil menjelaskan **{metrics['r2']*100:.1f}%** "
