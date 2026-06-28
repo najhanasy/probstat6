@@ -172,7 +172,7 @@ df, model, features, target, X_train, X_test, y_train, y_test, y_pred, metrics =
 #  SIDEBAR — Kalkulator Prediksi
 # ══════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## ⚽ Kalkulator Prediksi")
+    st.markdown("##  Kalkulator Prediksi")
     st.markdown("Masukkan statistik tim untuk memprediksi jumlah gol.")
     st.divider()
 
@@ -191,7 +191,7 @@ with st.sidebar:
     st.markdown(f"""
     <div class="pred-box">
       <div class="pred-number">{pred_goals:.1f}</div>
-      <div class="pred-label">⚽ Prediksi Gol</div>
+      <div class="pred-label"> Prediksi Gol</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -203,7 +203,7 @@ with st.sidebar:
 # ══════════════════════════════════════════════════════════════
 #  HEADER
 # ══════════════════════════════════════════════════════════════
-st.markdown("# ⚽ Regresi Berganda — Prediksi Gol Tim Sepak Bola")
+st.markdown("#  Regresi Berganda — Prediksi Gol Tim Sepak Bola")
 st.markdown(
     "Implementasi **Multiple Linear Regression** menggunakan statistik pertandingan "
     "untuk memprediksi jumlah gol yang dicetak sebuah tim."
